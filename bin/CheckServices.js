@@ -7,12 +7,6 @@ var chalk = require('chalk');
 var ora = require('ora');
 var servicesPackage = require('./services.json');
 
-var spinner = ora({
-  text: 'Loading',
-  color: 'blue',
-  spinner: 'bouncingBar'
-});
-
 function checkServices(argument) {
   var options = Object.keys(servicesPackage);
   var argumentToUse = argument || 'repositories';
@@ -24,14 +18,22 @@ function checkServices(argument) {
     console.log(chalk.blue('Checking ' + argumentToUse + '...'));
 
     syncEach(servicesPackage[argumentToUse], function (item, next) {
+      var spinner = ora({
+        text: '',
+        color: 'blue',
+        spinner: 'bouncingBar'
+      });
+
       var itemText = 'Testing ' + item.name + '...';
       spinner.start();
       requestPromise(item.url).then(function () {
         itemText += 'Status: ' + chalk.green('service working!');
         console.log(itemText);
+        spinner.succeed();
       }).catch(function () {
         itemText += 'Status: ' + chalk.red('service down! :(');
         console.log(itemText);
+        spinner.fail();
       }).finally(function (response) {
         spinner.stop();
         next(response);
