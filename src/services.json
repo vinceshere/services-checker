@@ -1,0 +1,15 @@
+{
+  "php": [
+    { "name": "Composer", "url": "https://packagist.org/" }
+  ],
+  "js": [
+    { "name": "NPM", "url": "https://www.npmjs.com/package/npm" }
+  ],
+  "python": [
+    { "name": "Pip", "url": "https://pypi.python.org/pypi/pip" }
+  ],
+  "repositories": [
+    { "name": "Github", "url": "https://www.github.org" },
+    { "name": "Bitbucket", "url": "https://www.bitbucket.org" }
+  ]
+}

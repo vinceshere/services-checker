@@ -1,0 +1,80 @@
+{
+  "name": "services-checker",
+  "version": "1.0.0",
+  "description": "A Node.js CLI that checks if most common development services are running.",
+  "main": "src/index.js",
+  "check-coverage": true,
+  "all": true,
+  "scripts": {
+    "clear": "rimraf bin",
+    "build": "npm run clear && babel --out-dir bin src --copy-files",
+    "build:watch": "npm run build -- --watch",
+    "lint": "eslint src/*.js",
+    "prepush": "npm run lint && npm run test:coverage",
+    "test": "mocha tests/**/*.spec.js --require babel-register --reporter nyan",
+    "test:tdd": "npm run test -- --watch",
+    "test:coverage": "nyc npm run test"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "services-checker": "bin/main.js"
+  },
+  "nyc": {
+    "functions": 80,
+    "lines": 80,
+    "check-coverage": true,
+    "extension": [
+      ".js"
+    ],
+    "include": [
+      "src/**/*.js"
+    ],
+    "reporter": [
+      "html",
+      "text"
+    ],
+    "report-dir": "docs/reports/coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinceshere/services-checker.git"
+  },
+  "keywords": [
+    "nodejs",
+    "cli",
+    "services",
+    "checker"
+  ],
+  "author": "Vicente Santos <vicente.r.santos@gmail.com> (http://v1nce.com.br/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vinceshere/services-checker/issues"
+  },
+  "homepage": "https://github.com/vinceshere/services-checker#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "cross-env": "^5.1.3",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "husky": "^0.14.3",
+    "mocha": "^4.1.0",
+    "nock": "^9.1.6",
+    "nyc": "^11.4.1",
+    "rimraf": "^2.6.2",
+    "sinon": "^4.1.5",
+    "sinon-chai": "^2.14.0"
+  },
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "commander": "^2.13.0",
+    "lodash": "^4.17.4",
+    "ora": "^1.3.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "sync-each": "^1.0.1"
+  }
+}
