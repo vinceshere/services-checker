@@ -2,6 +2,8 @@
 
 A Node.js CLI that checks if most common development services are running.
 
+![alt text](https://raw.githubusercontent.com/vinceshere/services-checker/master/image.gif)
+
 ## Installation
 
 ```sh
