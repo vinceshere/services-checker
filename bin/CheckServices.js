@@ -15,27 +15,24 @@ function checkServices(argument) {
   });
 
   if (testArgument) {
-    console.log(chalk.blue('Checking ' + argumentToUse + '...'));
+    console.log(chalk.blue('Checking ' + argumentToUse + '...\n'));
 
     syncEach(servicesPackage[argumentToUse], function (item, next) {
       var spinner = ora({
-        text: '',
+        text: 'Testing ' + chalk.bold(item.name) + ':',
         color: 'blue',
-        spinner: 'bouncingBar'
+        spinner: 'dots'
       });
 
-      var itemText = 'Testing ' + item.name + '...';
       spinner.start();
+
       requestPromise(item.url).then(function () {
-        itemText += 'Status: ' + chalk.green('service working!');
-        console.log(itemText);
+        spinner.text = 'Testing ' + chalk.bold(item.name) + ': ' + chalk.green('service working! :)');
         spinner.succeed();
       }).catch(function () {
-        itemText += 'Status: ' + chalk.red('service down! :(');
-        console.log(itemText);
-        spinner.fail();
+        spinner.text = 'Testing ' + chalk.bold(item.name) + ': ' + chalk.red('service down! :(');
+        spinner.error();
       }).finally(function (response) {
-        spinner.stop();
         next(response);
       });
     }, function () {

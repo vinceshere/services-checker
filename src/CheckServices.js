@@ -11,30 +11,27 @@ function checkServices(argument) {
   const testArgument = _.some(options, item => item === argumentToUse);
 
   if (testArgument) {
-    console.log(chalk.blue(`Checking ${argumentToUse}...`));
+    console.log(chalk.blue(`Checking ${argumentToUse}...\n`));
 
     syncEach(
       servicesPackage[argumentToUse],
       (item, next) => {
         const spinner = ora({
-          text: '',
+          text: `Testing ${chalk.bold(item.name)}:`,
           color: 'blue',
-          spinner: 'bouncingBar',
+          spinner: 'dots',
         });
 
-        let itemText = `Testing ${item.name}...`;
         spinner.start();
+
         requestPromise(item.url)
           .then(() => {
-            itemText += `Status: ${chalk.green('service working!')}`;
-            console.log(itemText);
+            spinner.text = `Testing ${chalk.bold(item.name)}: ${chalk.green('service working! :)')}`;
             spinner.succeed();
           }).catch(() => {
-            itemText += `Status: ${chalk.red('service down! :(')}`;
-            console.log(itemText);
-            spinner.fail();
+            spinner.text = `Testing ${chalk.bold(item.name)}: ${chalk.red('service down! :(')}`;
+            spinner.error();
           }).finally((response) => {
-            spinner.stop();
             next(response);
           });
       }, () => {

@@ -13,11 +13,14 @@ $ npm install --global services-checker
 ### Terminal
 
 ```
-// -E or --environment param
-services-checker -E [option]
+// -s or --service param
+services-checker -s [option]
 
 // possible options: js, php, python, repositories
-services-checker -E repositories';
+services-checker -s repositories';
+
+// default option is repositories when -s parameter isn't passed
+services-checker
 ```
 
 ## Versioning

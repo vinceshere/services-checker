@@ -10,9 +10,9 @@ program
   .name('services-checker')
   .usage('[options]')
   .description(pkg.description)
-  .option('-E, --environment <environment>',
-    `Environment to be checked. (Default: repositories) \n
+  .option('-s, --service <service name>',
+    `Services to be checked. (Default: repositories) \n
     Options: ${Object.keys(servicesPackage).join(', ')}`)
   .parse(process.argv)
 
-checkServices(program.environment || 'repositories');
+checkServices(program.service || 'repositories');
