@@ -1,6 +1,6 @@
 {
   "name": "services-checker",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A Node.js CLI that checks if most common development services are running.",
   "main": "src/index.js",
   "check-coverage": true,

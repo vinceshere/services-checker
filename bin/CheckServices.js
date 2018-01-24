@@ -31,7 +31,7 @@ function checkServices(argument) {
         spinner.succeed();
       }).catch(function () {
         spinner.text = 'Testing ' + chalk.bold(item.name) + ': ' + chalk.red('service down! :(');
-        spinner.error();
+        spinner.fail();
       }).finally(function (response) {
         next(response);
       });
