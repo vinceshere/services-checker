@@ -10,7 +10,6 @@
     "build": "npm run clear && babel --out-dir bin src --copy-files",
     "build:watch": "npm run build -- --watch",
     "lint": "eslint src/*.js",
-    "prepush": "npm run lint && npm run test:coverage",
     "test": "mocha tests/**/*.spec.js --require babel-register --reporter nyan",
     "test:tdd": "npm run test -- --watch",
     "test:coverage": "nyc npm run test"
