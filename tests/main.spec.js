@@ -24,7 +24,7 @@ describe("Main CLI", () => {
   });
 
   it("should return error when the argument environment (-E) is invalid", (done) => {
-    exec(`${servicesChecker} -E brainfuck`, (err, stdout, stderr) => {
+    exec(`${servicesChecker} -s brainfuck`, (err, stdout, stderr) => {
       if (err) throw err;
       expect(stdout.includes('Invalid option brainfuck.')).to.be.true;
       done();
