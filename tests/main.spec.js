@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 const exec = require("child_process").exec;
-const servicesChecker = 'node ./src/main.js';
+const servicesChecker = './src/main.js';
 const pkg = require('../package.json');
 const services = require('../src/services.json');
 

@@ -1,5 +1,7 @@
 # Services Checker
 
+[![Build Status](https://travis-ci.org/vinceshere/services-checker.svg?branch=master)](https://travis-ci.org/vinceshere/services-checker) [![Coverage Status](https://coveralls.io/repos/github/vinceshere/services-checker/badge.svg?branch=master)](https://coveralls.io/github/vinceshere/services-checker?branch=master)
+
 A Node.js CLI that checks if most common development services are running.
 
 ![alt text](https://raw.githubusercontent.com/vinceshere/services-checker/master/image.gif)
